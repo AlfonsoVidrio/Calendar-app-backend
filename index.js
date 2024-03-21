@@ -10,7 +10,10 @@ const app = express();
 // Directorio público
 app.use( express.static('public') );
 
-app.use('/api/auth', router)
+// lectura y parseo del body
+app.use(express.json());
+
+app.use('/api/auth', router);
 
 // escuchar
 app.listen(process.env.PORT, () => {
