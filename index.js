@@ -1,15 +1,20 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import router from './routes/auth.js'
 import { dbConnection } from './database/config.js';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
+import morgan from 'morgan';
+import router from './routes/auth.js'
 
 dotenv.config();
 
 // crear el servidor de express
 const app = express();
 
+app.use(morgan('dev'));
 // Base de datos
 dbConnection();
+
+app.use(cors());
 
 // Directorio público
 app.use( express.static('public') );
