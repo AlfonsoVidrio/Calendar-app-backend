@@ -3,7 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
-import router from './routes/auth.js'
+import auth from './routes/auth.js'
+import events from './routes/events.js'
 
 dotenv.config();
 
@@ -22,7 +23,8 @@ app.use( express.static('public') );
 // lectura y parseo del body
 app.use(express.json());
 
-app.use('/api/auth', router);
+app.use('/api/auth', auth);
+app.use('/api/events', events);
 
 // escuchar
 app.listen(process.env.PORT, () => {
