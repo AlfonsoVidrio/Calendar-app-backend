@@ -33,14 +33,9 @@ app.use('/api/auth', auth);
 app.use('/api/events', events);
 
 // Todas las rutas no manejadas explícitamente serán redirigidas al index.html
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'), function(err) {
-        if (err) {
-            res.status(500).send(err)
-        }
-    })
+app.use( '*', (req, res) => {
+    res.sendFile( path.join(__dirname, 'public/index.html') );
 })
-
 // escuchar
 app.listen(process.env.PORT, () => {
     console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
