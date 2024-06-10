@@ -8,7 +8,7 @@ import events from './routes/events.js'
 
 dotenv.config();
 
-// crear el servidor de express
+// Crear el servidor de express
 const app = express();
 
 app.use(morgan('dev'));
